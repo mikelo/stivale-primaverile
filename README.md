@@ -1,6 +1,6 @@
 This is a simple POC showing how to implement prometheus metrics in a spring-boot application.
 
-To achieve this, we must first add to our pom.xml the required dependencies needed to use prometheus libraries inside our code:
+* to achieve this, we must first add to our pom.xml the required dependencies needed to use prometheus libraries inside our code:
 
 ```xml
 		<dependency>
@@ -24,7 +24,7 @@ To achieve this, we must first add to our pom.xml the required dependencies need
 	</dependency>
 ```    
 
-then we need to configure our /metrics endpoint in our application.properties:
+* then we need to configure our /metrics endpoint in our application.properties:
 
 ```properties
 management.endpoints.web.exposure.include=prometheus,health
@@ -32,7 +32,7 @@ management.endpoints.jmx.exposure.include=prometheus
 management.endpoints.web.base-path=/
 management.endpoints.web.path-mapping.prometheus=/metrics
 ```
-next we add some custom metrics to the StivalOne.java class:
+* next we add some custom metrics to the StivalOne.java class:
 ```java
 public StivalOne(MeterRegistry meterRegistry) {
     testGauge = meterRegistry.gauge("stiva_gauge", new AtomicInteger(0));
@@ -49,14 +49,14 @@ public StivalOne(MeterRegistry meterRegistry) {
   }
 ```
 
-Finally we can deploy our application in two ways:
+* finally we can deploy our application in two ways:
 
-* running on localhost:
+on localhost:
 ```bash
 mvn spring-boot:run
 ```
 
-* running on openshift
+on openshift
 ```bash
 oc new-project stivale
 mvn package oc:deploy -Popenshift -DskipTests
