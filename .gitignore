@@ -57,3 +57,7 @@ build/
 ### VS Code ###
 .vscode/
 >>>>>>> 4f27351 (stivalone di primavera!)
+
+
+##old pom files###
+pom.*.*

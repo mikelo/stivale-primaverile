@@ -21,8 +21,6 @@ public class StivalOne {
   .labelNames("stivaletto").register();
 
   public StivalOne(MeterRegistry meterRegistry) {
-    // Counter vs. gauge, summary vs. histogram
-    // https://prometheus.io/docs/practices/instrumentation/#counter-vs-gauge-summary-vs-histogram
     testGauge = meterRegistry.gauge("stiva_gauge", new AtomicInteger(0));
     testCounter = meterRegistry.counter("conta_stivalone");
     requestLatency = Histogram.build()
